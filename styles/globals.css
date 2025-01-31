@@ -1,21 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap');
+/* Apply noise effect to all sections except menu and footer */
+/* Apply noise effect as an overlay */
+/* Base noise effect */
+.section-noise {
+  position: relative;
+  background-color: black;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Standard noise layer */
+.section-noise::after,
+.section-noise-strong::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/background-noise.png');
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Stronger noise effect for sections with images */
+.section-noise-strong::after {
+  opacity: 0.3 !important; /* Increased intensity */
+  background-image: url('/background-noise.png'), url('/background-noise.png'); /* Double overlay */
 }

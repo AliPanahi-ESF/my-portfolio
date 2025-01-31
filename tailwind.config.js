@@ -6,7 +6,12 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"], // For subtext & menu
+        heading: ["Space Grotesk", "sans-serif"], // For headings
+      },
+    },
   },
   plugins: [],
 };
