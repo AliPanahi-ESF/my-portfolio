@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export default function MyApproach() {
   const steps = [
@@ -10,48 +10,90 @@ export default function MyApproach() {
   ];
 
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
+  const scrollContainerRef = useRef(null);
+  const [isHorizontalScroll, setIsHorizontalScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionTop = sectionRef.current?.getBoundingClientRect().top;
+      if (sectionTop <= window.innerHeight * 0.2 && sectionTop > -window.innerHeight * 0.5) {
+        setIsHorizontalScroll(true);
+        document.body.style.overflow = "hidden"; // Lock vertical scrolling
+      } else {
+        setIsHorizontalScroll(false);
+        document.body.style.overflow = "auto"; // Restore vertical scrolling
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isHorizontalScroll) {
+      const handleWheel = (event) => {
+        if (scrollContainerRef.current) {
+          scrollContainerRef.current.scrollLeft += event.deltaY * 2; // Convert vertical scroll to horizontal
+          event.preventDefault();
+        }
+
+        // Unlock vertical scrolling once user reaches the last box
+        const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
+        if (scrollContainerRef.current.scrollLeft >= maxScroll - 10) {
+          setIsHorizontalScroll(false);
+          document.body.style.overflow = "auto"; // Enable vertical scrolling
+        }
+      };
+
+      window.addEventListener("wheel", handleWheel, { passive: false });
+      return () => {
+        window.removeEventListener("wheel", handleWheel);
+      };
+    }
+  }, [isHorizontalScroll]);
 
   return (
-<section className="w-full h-screen flex flex-col text-white section-noise">
-
+    <section ref={sectionRef} className="w-full h-screen flex flex-col text-white section-noise">
       {/* Section Title */}
       <div className="h-[15%] flex items-center justify-center">
-        <h2 className="text-4xl md:text-6xl font-heading text-center">My Approach</h2>
+        <h2 className="text-6xl md:text-8xl font-heading text-center uppercase tracking-widest">
+          My Approach
+        </h2>
       </div>
 
-      {/* Steps Row */}
-      <div className="h-[85%] w-full flex overflow-hidden">
+      {/* Steps Row - Horizontal Scrolling */}
+      <div
+        ref={scrollContainerRef}
+        className="h-[85%] w-full flex overflow-x-scroll snap-x snap-mandatory scrollbar-hide"
+        style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+      >
         {steps.map((step, index) => {
-          // Adjust the scrollYProgress range so all 4 boxes appear correctly
-          const startRange = index * 0.10; // Adjusted for all four boxes
-          const endRange = startRange + 0.25; // Ensures full transition
-
-          const xOffset = useTransform(scrollYProgress, [startRange, endRange], ["-100%", "0%"]);
-          const opacity = useTransform(scrollYProgress, [startRange, endRange], [0, 1]);
-
           return (
             <motion.div
               key={index}
-              className="w-1/4 flex flex-col justify-center items-center bg-black text-white p-10 border-l border-gray-700 h-full"
-              style={{ x: xOffset, opacity }}
+              className="w-screen h-full flex flex-col justify-center items-center bg-black text-white p-10 border-l border-gray-700 flex-shrink-0 snap-center"
+              initial={{ opacity: 0, x: 200 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.3, duration: 0.8 }}
+              viewport={{ once: false, amount: 0.2 }}
             >
               {/* Step Number */}
-              <span className="text-xl md:text-2xl font-bold text-gray-400 tracking-widest">{step.number}</span>
+              <span className="text-4xl md:text-5xl font-bold text-gray-400 tracking-wider">
+                {step.number}
+              </span>
 
-              {/* Placeholder Icon */}
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-gray-500 rounded-full mt-6"></div>
-
-              {/* Step Title */}
-              <h3 className="text-2xl md:text-3xl font-heading mt-6">{step.title}</h3>
-
-              {/* Step Description */}
-              <p className="mt-4 text-md md:text-lg font-sans text-center px-6 leading-relaxed">
-                {step.description}
-              </p>
+              {/* Step Title & Description */}
+              <div className="flex flex-col items-center text-center">
+                <h3 className="text-3xl md:text-4xl font-heading uppercase tracking-wide mt-6">
+                  {step.title}
+                </h3>
+                <p className="mt-4 text-md md:text-lg font-sans leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
             </motion.div>
           );
         })}

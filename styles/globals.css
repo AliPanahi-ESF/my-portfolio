@@ -33,3 +33,24 @@
   opacity: 0.3 !important; /* Increased intensity */
   background-image: url('/background-noise.png'), url('/background-noise.png'); /* Double overlay */
 }
+
+/* Animated Text Effect for Title */
+.title {
+  font-family: "Cinzel", serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title {
+  background-image: url("https://media.giphy.com/media/5t20FDjwknvByghP6O/giphy.gif?cid=ecf05e47zx6sm0nx87hpgy7qn825gv1tl4gsqjift2tvq39z&ep=v1_gifs_related&rid=giphy.gif&ct=g");
+  background-size: cover;
+  color: transparent;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  font-weight: bold;
+}
