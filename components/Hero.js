@@ -1,58 +1,84 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [mouseX, setMouseX] = useState(0);
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1000
+  );
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      let normalizedPosition = e.pageX / (width / 2) - 1;
+      let speedSlow = 100 * normalizedPosition;
+      let speedFast = 200 * normalizedPosition;
+
+      document.querySelectorAll(".spanSlow").forEach((span) => {
+        span.style.transform = `translateX(${speedSlow}px)`;
+      });
+
+      document.querySelectorAll(".spanFast").forEach((span) => {
+        span.style.transform = `translateX(${speedFast}px)`;
+      });
+    };
+
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+
   return (
-<section className="w-screen h-screen flex flex-col justify-center items-center text-white relative section-noise">
+    <section className="hero">
+      <div className="wrap">
+        {/* Title: "Ali Panahi" */}
+        <div className="line">
+          <div className="left">
+            <div className="content">
+              <span className="spanSlow title-text">Ali Panahi</span>
+            </div>
+          </div>
+          <div className="right">
+            <div className="content">
+              <span className="spanSlow title-text">Ali Panahi</span>
+            </div>
+          </div>
+        </div>
 
-      {/* Name Animation */}
-      <motion.h1
-        className="text-7xl sm:text-8xl md:text-[10rem] font-bold uppercase tracking-widest text-center font-[Cinzel]"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        ALI PANAHI
-      </motion.h1>
+        {/* Subtitle Line 1: "UX/UI Designer" */}
+        <div className="line">
+          <div className="left">
+            <div className="content">
+              <span className="spanFast subtitle-text">UX/UI Designer</span>
+            </div>
+          </div>
+          <div className="right">
+            <div className="content">
+              <span className="spanFast subtitle-text">UX/UI Designer</span>
+            </div>
+          </div>
+        </div>
 
-      {/* Subtitle */}
-      <motion.p
-        className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-400 text-center"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
-      >
-        UX/UI Designer & Front-End Developer
-      </motion.p>
-
-      {/* Navigation Menu */}
-      <nav className="absolute top-10 w-full px-10">
-        <ul className="flex justify-between text-lg w-full">
-          {[
-            { en: "HOME", fa: "خانه" },
-            { en: "WORK", fa: "کار" },
-            { en: "ABOUT", fa: "درباره" },
-            { en: "CONTACT", fa: "تماس" },
-          ].map((item, index) => (
-            <motion.li
-              key={index}
-              className="cursor-pointer text-xl sm:text-2xl md:text-3xl font-[Cinzel]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 * index, duration: 0.5 }}
-              whileHover={{ scale: 1.1 }}
-            >
-              <span className="relative group">
-                <span className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {item.fa}
-                </span>
-                <span className="group-hover:opacity-0 transition-opacity duration-300">
-                  {item.en}
-                </span>
-              </span>
-            </motion.li>
-          ))}
-        </ul>
-      </nav>
+        {/* Subtitle Line 2: "Front-End Developer" */}
+        <div className="line">
+          <div className="left">
+            <div className="content">
+              <span className="spanFast subtitle-text">Front-End Developer</span>
+            </div>
+          </div>
+          <div className="right">
+            <div className="content">
+              <span className="spanFast subtitle-text">Front-End Developer</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
