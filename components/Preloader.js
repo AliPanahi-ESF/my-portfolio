@@ -1,47 +1,36 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-export default function Preloader({ onComplete }) {
+export default function Preloader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress((oldProgress) => {
-        if (oldProgress >= 100) {
-          clearInterval(interval);
-          setTimeout(() => onComplete(), 500); // Delay before hiding
-          return 100;
-        }
-        return oldProgress + 1;
-      });
-    }, 20); // Adjust speed if needed
+      setProgress((prev) => (prev >= 100 ? 100 : prev + 5));
+    }, 200);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, []);
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 w-full h-full bg-white flex flex-col items-center justify-center z-50"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: progress === 100 ? 0 : 1 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-    >
-      {/* Loading Text (Bigger & Centered) */}
+    <div className="preloader">
+      {/* Loading Text */}
       <motion.h1
-        className="text-6xl md:text-8xl font-bold text-black"
+        className="loading-text"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ duration: 4 }}
       >
         Loading {progress}%
       </motion.h1>
 
-      {/* Left-to-right transition effect */}
+      {/* Background Animation */}
       <motion.div
-        className="absolute top-0 left-0 w-full h-full bg-black"
-        initial={{ width: "100%" }}
-        animate={{ width: "0%" }}
-        transition={{ duration: 2, ease: "easeInOut" }}
+        className="loading-bg"
+        initial={{ width: "0%" }}
+        animate={{ width: "100%" }}
+        transition={{ duration: 4, ease: "easeInOut" }}
       />
-    </motion.div>
+    </div>
   );
 }

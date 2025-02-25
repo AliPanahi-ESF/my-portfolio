@@ -47,22 +47,20 @@
 }
 
 .title {
-  background-image: url("https://media.giphy.com/media/5t20FDjwknvByghP6O/giphy.gif?cid=ecf05e47zx6sm0nx87hpgy7qn825gv1tl4gsqjift2tvq39z&ep=v1_gifs_related&rid=giphy.gif&ct=g");
+  background-image: url("https://media.giphy.com/media/aCCleAr6W1njtygxHC/giphy.gif?cid=ecf05e47ki9eee6uot3w0txjduzbvr3i0vmg44u3sos4wt81&ep=v1_gifs_related&rid=giphy.gif&ct=g");
   background-size: cover;
   color: transparent;
   -moz-background-clip: text;
   -webkit-background-clip: text;
   font-weight: bold;
 }
-/* General Reset */
-/* General Reset */
-/* General Reset */
-/* General Reset */
+
 /* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none;
 }
 
 /* Hero Section */
@@ -125,14 +123,16 @@
 /* Content Positioning */
 .left .content {
   text-align: center;
+  transform: translateX(50%);
 }
+
 .right .content {
 
   text-align: center;
   transform: translate(-50vw);
 }
 .right .content {
-  transform: translateX(-25%);
+  transform: translateX(-50%);
 }
 
 span {
@@ -141,4 +141,361 @@ span {
   text-transform: uppercase;
   line-height: 1;
   transition: ease-out 0.6s;
+}
+/* 🔹 Navigation Menu */
+.nav-menu {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}
+
+.nav-menu ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2vw;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  color: white; /* Make sure it's visible */
+}
+
+/* Normal text (English) */
+.menu-text {
+  display: block;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Hover effect (Persian) */
+.menu-text-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.menu-item:hover .menu-text {
+  opacity: 0;
+}
+
+.menu-item:hover .menu-text-hover {
+  opacity: 1;
+}
+
+
+/* 🔹 Section Layout */
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* 🔹 Titles */
+.section-title {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--secondary-color);
+}
+/* 🔹 Section Layout */
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* 🔹 Titles */
+.section-title {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+/* 🔹 About Text */
+.about-text {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 800px;
+  color: var(--text-color);
+}
+
+/* 🔹 Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table td, .table th {
+  border-bottom: 1px solid var(--text-color);
+  padding: 10px;
+  text-align: left;
+}
+
+.table .project-title {
+  font-weight: bold;
+}
+
+/* 🔹 Progress Bars */
+.progress {
+  height: 5px;
+  background: var(--secondary);
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 20px;
+}
+
+.progress .progress-bar {
+  height: 100%;
+  background: var(--text-color);
+  transition: width 1.2s ease-out;
+}
+
+.progress-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.progress-value {
+  float: right;
+  font-weight: bold;
+  font-style: italic;
+  color: var(--text-color);
+}
+.project-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: left;
+}
+
+.project-detail .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.project-detail .description {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.project-detail .content {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* 🔹 under construction page */
+.under-construction {
+  text-align: center;
+  color: white;
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.under-construction h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.under-construction p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+.under-construction a {
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.under-construction a:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+/* White Cursor (Main Cursor) */
+.custom-cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.05s linear;
+}
+
+/* Blue Cursor (Hover Effect) */
+.custom-cursor-hover {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: #3b82f6; /* Blue color */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+  transition: transform 0.2s ease-out;
+}
+
+/* When hovering over links or buttons */
+.custom-cursor-hover.hover {
+  transform: scale(1.5);
+}
+
+/* 🔹 Preloader Container */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  color: wheat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+/* 🔹 Loading Text */
+.loading-text {
+  font-size: 8rem;
+  font-weight: bold;
+  font-family: Cinzel, serif;
+  position: absolute;
+  z-index: 2;
+
+}
+
+/* 🔹 Background Animation */
+.loading-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: black;
+  z-index: 1;
+}
+
+/* 🔹 Liquify Background Effect */
+.liquify-effect {
+  background-image: url("https://media.giphy.com/media/5t20FDjwknvByghP6O/giphy.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.2;
+  transition: transform 0.5s ease-out, filter 0.5s ease-out;
+}
+
+/* 🔹 Hover Effect - Liquify */
+.liquify-effect:hover {
+  transform: scale(1.05);
+  filter: url(#wavy); /* Apply SVG Filter */
+}
+
+/* 🔹 Smooth Animation */
+@keyframes liquify {
+  0% { transform: scale(1); filter: blur(0px); }
+  50% { transform: scale(1.02); filter: blur(3px); }
+  100% { transform: scale(1); filter: blur(0px); }
+}
+
+/* 🔹 Footer Layout Fix */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 🔹 Centering Social Icons */
+.social-icons {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 🔹 APloco.design - Proper Right Alignment */
+.aploco-text {
+  text-align: right;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.aploco-text:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+
+
+/* 🔹 Scroll Button */
+.scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Hide scrollbar for all browsers */
+html, body {
+  overflow: hidden; /* Completely remove scrolling */
+}
+
+/* Alternative: Hide scrollbar but allow scrolling */
+html, body {
+  overflow-x: hidden; /* Hides horizontal scrolling */
+  overflow-y: scroll; /* Allows vertical scrolling but hides scrollbar */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
+}
+
+/* Hide scrollbar in Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  display: none;
 }

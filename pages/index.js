@@ -6,6 +6,7 @@ import ProjectPage from "@/components/ProjectPage";
 import GetToKnow from "@/components/GetToKnow";
 import Contact from "@/components/Contact";
 
+
 export default function Home() {
   return (
     <>
