@@ -14,7 +14,7 @@ export default function SmartMobileProject() {
             <iframe
         src="https://www.youtube.com/embed/xdAH9EEHEo0?si=AttfLIrpDPUyFp-t"
         width="100%"
-        height="600"
+        height="800"
         frameBorder="0"
         allowFullScreen
         className="rounded-3xl shadow-lg mt-6"

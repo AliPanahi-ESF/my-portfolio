@@ -499,3 +499,10 @@ html, body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .custom-cursor,
+  .custom-cursor-hover {
+    display: none !important;
+  }
+}

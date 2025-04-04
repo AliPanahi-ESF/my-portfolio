@@ -16,13 +16,13 @@ const projects = [
     link: "/projects/smart-mobile",
     height: "h-[600px]",
   },
-  // {
-  //   title: "Next-Gen Mobile UX",
-  //   category: "Personal Project",
-  //   image: "/mobile.jpg",
-  //   link: "/projects/mobile",
-  //   height: "h-[450px]",
-  // },
+ {
+   title: "Branding & UI Design for Lucifer",
+   category: "Semester Project",
+   image: "/udiac.jpg",
+   link: "/projects/Udiac",
+    height: "h-[450px]",
+ },
   // {
   //   title: "AI-Powered Dashboard UI",
   //   category: "Freelance",
