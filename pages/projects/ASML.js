@@ -1,32 +1,180 @@
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function SmartMobileProject() {
-    return (
-      <section className="w-full min-h-screen flex flex-col items-center justify-center text-white px-10 py-10 section-noise">
-        <h2 className="text-4xl md:text-6xl font-heading text-center mb-10">UX/UI Design for ASML</h2>
-  
-        {/* Custom Styling & Content */}
-        <div className="w-full max-w-4xl text-lg opacity-80">
-          <p>
-            
-          </p>
-        </div>
-  
-        {/* Notion Embed or Image Showcase */}
-        <iframe
-          src="https://alipanahi.notion.site/ebd/1a0f7396b0b580e787cbdbd7032e1bc1"
-          width="100%"
-          height="800"
-          frameBorder="0"
-          allowFullScreen
-          className="rounded-3xl shadow-lg mt-6"
-        ></iframe>
-          <a
-          href="/selected-work"
-          className="mt-6 px-6 py-3 bg-gray-700 text-white rounded-full hover:scale-105 transition"
+export default function ASMLProject() {
+  return (
+    <div className="w-full text-white bg-black section-noise">
+      {/* 1. Hero Section */}
+      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20 relative">
+        <motion.h1
+          className="text-4xl md:text-6xl font-bold tracking-widest mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
         >
-          Back to Portfolio
-        </a>
+          Graduation Internship at ASML
+        </motion.h1>
+        <motion.p
+          className="text-lg md:text-xl max-w-2xl opacity-80"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          Reduced UI inconsistencies and improved user workflow efficiency across high-tech tooling software.
+        </motion.p>
+        <motion.div
+          className="mt-6 border border-blue-500/50 rounded-2xl px-6 py-4 flex flex-col md:flex-row gap-4 text-sm md:text-base backdrop-blur-md bg-white/5"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+        >
+          <span>🕒 6 Months</span>
+          <span>🎯 My  Role: UX/UI Design, Design System, Research</span>
+          <span>🧠 Team: Designers, Engineers, PO</span>
+        </motion.div>
       </section>
-    );
-  }
-  
+
+      {/* 2. Background & Problem */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 py-24 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Background & Problem</h2>
+          <p className="opacity-80">
+          Imagine trying to operate ten different machines, each with their own random button layout. That’s what software engineers at ASML were dealing with.
+          Through early observations and informal usability testing, it became clear that tool interfaces were inconsistent, confusing, and frankly unfriendly. This slowed down workflows and caused frustration, especially when moving between different tools built by different teams.
+
+
+          </p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="rounded-xl overflow-hidden shadow-xl"
+        >
+          <Image src="/mismatched-ui.png" alt="Inconsistent UI" width={600} height={400} className="object-cover w-full h-auto" />
+        </motion.div>
+      </section>
+
+      {/* 3. About ASML */}
+      <section className="bg-neutral-900 py-24 px-10 text-center">
+        <motion.h2
+          className="text-4xl font-bold mb-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          What is ASML?
+        </motion.h2>
+        <motion.p
+          className="text-lg max-w-2xl mx-auto opacity-80"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        >
+          ASML is the leading supplier of photolithography systems for the semiconductor industry. The tools are critical, complex, and used in controlled environments by operators and engineers.
+        </motion.p>
+      </section>
+
+      {/* 4. The Users */}
+      <section className="py-24 px-10">
+        <h2 className="text-3xl font-bold mb-10 text-center">Who We Designed For</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {["Operators", "Software Engineers", "Designers"].map((role, i) => (
+            <motion.div
+              key={i}
+              className="bg-white/5 p-6 rounded-xl text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
+            >
+              <h3 className="text-xl font-semibold mb-2">{role}</h3>
+              <p className="text-sm opacity-70">
+                {role === "Operators" && "Want familiarity between tools and easy readability."}
+                {role === "Software Engineers" && "Need reusable UI patterns and consistency."}
+                {role === "Designers" && "Seek a system to align with development without confusion."}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. Focus Areas */}
+      <section className="py-24 px-10">
+        <h2 className="text-3xl font-bold mb-10 text-center">Design Focus Areas</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {["UI Audit", "Design Principles", "Modular Components", "Usability Testing"].map((area, i) => (
+            <motion.div
+              key={i}
+              className="bg-white/5 p-6 rounded-xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
+            >
+              <h3 className="text-xl font-semibold mb-2">{area}</h3>
+              <p className="text-sm opacity-70">
+                {area === "UI Audit" && "Mapped inconsistencies and best practices across tools."}
+                {area === "Design Principles" && "Defined shared visual direction to align efforts."}
+                {area === "Modular Components" && "Built flexible, atomic Figma components."}
+                {area === "Usability Testing" && "Early testing with engineers to validate ideas."}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. Final Deliverables */}
+      <section className="py-24 px-10">
+        <h2 className="text-3xl font-bold mb-10 text-center">Final Deliverables</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {["Design System", "UI Guidelines", "Developer Handoff"].map((item, i) => (
+            <motion.div
+              key={i}
+              className="bg-white/5 p-6 rounded-xl text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
+            >
+              <h3 className="text-xl font-semibold mb-2">{item}</h3>
+              <p className="text-sm opacity-70">
+                {item === "Design System" && "Modular Figma library for future projects."}
+                {item === "UI Guidelines" && "Defined do’s and don’ts for consistency."}
+                {item === "Developer Handoff" && "Clear specs, tokens, and interactive flows."}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 7. Takeaways */}
+      <section className="py-24 px-10 bg-neutral-800">
+        <h2 className="text-3xl font-bold mb-10 text-center">Key Takeaways</h2>
+        <motion.div
+          className="max-w-3xl mx-auto space-y-4"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <p>✅ Interviews gave 80% of the insights. Don’t skip talking to users. </p>
+          <p>📚 You’re not designing beauty — you’re solving operational pain points.</p>
+          <p>💬 A design system is a shared language, not a polished file.</p>
+        </motion.div>
+      </section>
+
+      {/* Prototype Link */}
+      <section className="py-20 px-10 text-center">
+        <Link
+          href="https://yourprototype.link"
+          target="_blank"
+          className="bg-blue-500 px-6 py-3 text-white rounded-full hover:scale-105 transition"
+        >
+          Explore Prototype ↗
+        </Link>
+      </section>
+    </div>
+  );
+}
