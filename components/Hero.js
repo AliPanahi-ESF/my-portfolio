@@ -37,6 +37,7 @@ export default function Hero() {
   }, [width]);
 
   return (
+    
     <motion.section
       id = "home" className="hero section-noise relative flex flex-col justify-center items-center"
       initial={{ opacity: 0, y: 50 }} // Start hidden & moved down
