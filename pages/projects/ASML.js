@@ -23,6 +23,17 @@ export default function ASMLProject() {
         >
           Reduced UI inconsistencies and improved user workflow efficiency across high-tech tooling software.
         </motion.p>
+
+        {/* New: Large Showcase Image */}
+        <motion.div
+          className="mt-10 max-w-5xl w-full rounded-3xl overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Image src="/asml.JPG" alt="ASML Overview" width={1600} height={900} className="w-full object-cover rounded-3xl" />
+        </motion.div>
+
         <motion.div
           className="mt-6 border border-blue-500/50 rounded-2xl px-6 py-4 flex flex-col md:flex-row gap-4 text-sm md:text-base backdrop-blur-md bg-white/5"
           initial={{ opacity: 0, y: 20 }}
@@ -30,7 +41,7 @@ export default function ASMLProject() {
           transition={{ delay: 0.8, duration: 0.8 }}
         >
           <span>🕒 6 Months</span>
-          <span>🎯 My  Role: UX/UI Design, Design System, Research</span>
+          <span>🎯 My Role: UX/UI Design, Design System, Research</span>
           <span>🧠 Team: Designers, Engineers, PO</span>
         </motion.div>
       </section>
@@ -44,10 +55,8 @@ export default function ASMLProject() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Background & Problem</h2>
           <p className="opacity-80">
-          Imagine trying to operate ten different machines, each with their own random button layout. That’s what software engineers at ASML were dealing with.
-          Through early observations and informal usability testing, it became clear that tool interfaces were inconsistent, confusing, and frankly unfriendly. This slowed down workflows and caused frustration, especially when moving between different tools built by different teams.
-
-
+            Imagine trying to operate ten different machines, each with their own random button layout. That’s what software engineers at ASML were dealing with.
+            Through early observations and informal usability testing, it became clear that tool interfaces were inconsistent, confusing, and frankly unfriendly. This slowed down workflows and caused frustration, especially when moving between different tools built by different teams.
           </p>
         </motion.div>
         <motion.div
@@ -57,6 +66,19 @@ export default function ASMLProject() {
           className="rounded-xl overflow-hidden shadow-xl"
         >
           <Image src="/mismatched-ui.png" alt="Inconsistent UI" width={600} height={400} className="object-cover w-full h-auto" />
+        </motion.div>
+      </section>
+
+      {/* New: Previous UI Section */}
+      <section className="py-24 px-10 bg-neutral-900">
+        <h2 className="text-3xl font-bold mb-10 text-center">Before the Redesign</h2>
+        <motion.div
+          className="max-w-4xl mx-auto rounded-3xl overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Image src="/before-redesign.png" alt="Previous UI" width={1200} height={700} className="w-full object-cover rounded-3xl" />
         </motion.div>
       </section>
 
@@ -150,6 +172,37 @@ export default function ASMLProject() {
         </div>
       </section>
 
+      {/* New: Final Product Demo */}
+      <section className="py-24 px-10 bg-neutral-900">
+        <h2 className="text-3xl font-bold mb-10 text-center">Final Product Preview</h2>
+        <motion.div
+          className="max-w-5xl mx-auto rounded-3xl overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Image src="/final-demo.png" alt="Final Demo UI" width={1600} height={900} className="w-full object-cover rounded-3xl" />
+        </motion.div>
+
+        {/* Buttons */}
+        <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-4">
+          <Link
+            href="https://yourprototype.link"
+            target="_blank"
+            className="bg-blue-500 px-6 py-3 text-white rounded-full hover:scale-105 transition"
+          >
+            Explore Prototype ↗
+          </Link>
+          <Link
+            href="https://yourfigmafile.link"
+            target="_blank"
+            className="bg-white text-black px-6 py-3 rounded-full hover:scale-105 transition"
+          >
+            View Figma File ↗
+          </Link>
+        </div>
+      </section>
+
       {/* 7. Takeaways */}
       <section className="py-24 px-10 bg-neutral-800">
         <h2 className="text-3xl font-bold mb-10 text-center">Key Takeaways</h2>
@@ -163,17 +216,6 @@ export default function ASMLProject() {
           <p>📚 You’re not designing beauty — you’re solving operational pain points.</p>
           <p>💬 A design system is a shared language, not a polished file.</p>
         </motion.div>
-      </section>
-
-      {/* Prototype Link */}
-      <section className="py-20 px-10 text-center">
-        <Link
-          href="https://yourprototype.link"
-          target="_blank"
-          className="bg-blue-500 px-6 py-3 text-white rounded-full hover:scale-105 transition"
-        >
-          Explore Prototype ↗
-        </Link>
       </section>
     </div>
   );

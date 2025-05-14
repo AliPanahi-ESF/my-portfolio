@@ -15,19 +15,33 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${isScrolled ? "bg-white/10 backdrop-blur-md shadow-md" : ""} px-8 py-3 rounded-full border border-white/20`}
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 px-6 py-2 rounded-full border ${
+        isScrolled
+          ? "bg-white/10 backdrop-blur-md shadow-lg border-white/20"
+          : "border-white/10"
+      }`}
     >
-      <ul className="flex gap-8 items-center justify-center">
+      <ul className="flex gap-6 items-center justify-center">
         {[
           { en: "HOME", fa: "خانه", href: "/#home" },
           { en: "WORK", fa: "کارها", href: "/#work" },
           { en: "ABOUT", fa: "درباره", href: "/about" },
           { en: "CONTACT", fa: "تماس", href: "/#contact" },
         ].map((item, index) => (
-          <li key={index} className="relative group cursor-pointer">
-            <Link href={item.href} className="font-heading text-white text-sm md:text-base">
-              <span className="block group-hover:opacity-0 transition-opacity duration-300">{item.en}</span>
-              <span className="absolute inset-0 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">{item.fa}</span>
+          <li
+            key={index}
+            className="relative group cursor-pointer px-4 py-2 rounded-xl transition duration-300 hover:border hover:border-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
+          >
+            <Link
+              href={item.href}
+              className="font-heading text-white text-sm md:text-base block text-center relative"
+            >
+              <span className="block group-hover:opacity-0 transition-opacity duration-300">
+                {item.en}
+              </span>
+              <span className="absolute inset-0 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {item.fa}
+              </span>
             </Link>
           </li>
         ))}

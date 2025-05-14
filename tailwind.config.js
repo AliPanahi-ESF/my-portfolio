@@ -8,8 +8,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"], // For subtext & menu
-        heading: ["Space Grotesk", "sans-serif"], // For headings
+        sans: ["Inter", "sans-serif"],
+        heading: ["Space Grotesk", "sans-serif"],
+      },
+      animation: {
+        'scroll-x': 'scroll-x 40s linear infinite',
+      },
+      keyframes: {
+        'scroll-x': {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
     },
   },
