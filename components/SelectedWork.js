@@ -38,7 +38,7 @@ export default function SelectedWork() {
     <motion.section id="work" className="w-full min-h-screen flex flex-col items-center text-white  py-60 section-noise gap-10">
       {/* 🔹 Title with Same Size as "My Approach" */}
       <motion.h2
-        className="text-6xl md:text-8xl title-text text-center uppercase tracking-widest"
+        className="md:text-8xl  text-xl uppercase tracking-widest mb-10 font-heading text-white"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}

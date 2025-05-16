@@ -1,69 +1,78 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 
 export default function MyApproach() {
   const steps = [
-    { number: "01", title: "Empathize", description: "Understanding user needs and pain points through research and observation." },
-    { number: "02", title: "Define", description: "Clearly outlining problems and goals to create meaningful design solutions." },
-    { number: "03", title: "Ideate", description: "Brainstorming and exploring creative solutions to address user needs." },
-    { number: "04", title: "Build & Test", description: "Developing prototypes and refining through testing and iteration." },
+    {
+      number: "01",
+      title: "Empathize",
+      description:
+        "Understanding user needs and pain points through research and observation.",
+    },
+    {
+      number: "02",
+      title: "Define",
+      description:
+        "Clearly outlining problems and goals to create meaningful design solutions.",
+    },
+    {
+      number: "03",
+      title: "Ideate",
+      description:
+        "Brainstorming and exploring creative solutions to address user needs.",
+    },
+    {
+      number: "04",
+      title: "Build & Test",
+      description:
+        "Developing prototypes and refining through testing and iteration.",
+    },
   ];
 
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
   return (
-    <motion.section 
-      ref={sectionRef}
-      className="w-full h-auto flex flex-col text-white section-noise gap-10 py-60"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-      viewport={{ once: true }}
+    <section
+      className="relative px-6 py-24 flex flex-col items-center text-center"
+      style={{
+        background:
+          "linear-gradient(to right, #000 10%, #0b0b0b 30%, #0e1a1d 70%, #000 90%)",
+      }}
     >
-      {/* Section Title */}
-      <div className="h-[15%] flex items-center justify-center ">
-        <h2 className="text-6xl md:text-8xl  title-text font-heading text-center uppercase tracking-widest">
-          My Approach
-        </h2>
-      </div>
+      <h2 className="md:text-8xl text-xl uppercase tracking-widest mb-10 font-heading text-white">
+        My Approach
+      </h2>
 
-      {/* Steps Row - Single Box on Mobile, Full Grid on Desktop */}
-      <div className="w-full max-w-screen-xl mx-auto flex flex-col md:flex-row md:gap-6 px-6 md:px-10">
-        {steps.map((step, index) => {
-          const startRange = index * 0.10;
-          const endRange = startRange + 0.20;
-
-          const xOffset = useTransform(scrollYProgress, [startRange, endRange], ["-100%", "0%"]);
-          const opacity = useTransform(scrollYProgress, [startRange, endRange, 1], [0, 1, 1]);
-
-          return (
-            <motion.div
-              key={index}
-              className="w-full md:w-1/4 h-[400px] flex flex-col justify-between bg-black text-white p-6 md:p-10 rounded-2xl border border-gray-700 shadow-lg flex-shrink-0"
-              style={{ x: xOffset, opacity }}
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-6">
+        {steps.map((step, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Tilt
+              tiltMaxAngleX={12}
+              tiltMaxAngleY={12}
+              glareEnable={true}
+              glareMaxOpacity={0.2}
+              className="relative bg-white/5 text-white p-8 rounded-3xl shadow-xl w-full h-[420px] flex flex-col justify-center items-center transition duration-500 hover:border hover:border-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] overflow-hidden group"
             >
-              {/* Step Number */}
-              <span className="text-4xl md:text-5xl font-bold text-red-500 tracking-wider self-start">
+              {/* 🔹 Micro shimmer animation */}
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none" />
+
+              <span className="text-3xl font-bold text-blue-400 mb-2">
                 .{step.number}
               </span>
-
-              {/* Step Content - Centered & Balanced */}
-              <div className="flex flex-col justify-center flex-grow">
-                <h3 className="text-2xl md:text-3xl font-heading tracking-wide text-center">
-                  {step.title}
-                </h3>
-                <p className="mt-4 text-md md:text-lg font-sans leading-relaxed text-center">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
+              <h3 className="text-white font-bold mb-3 text-lg md:text-xl text-center">
+                {step.title}
+              </h3>
+              <p className="text-sm md:text-base text-white/80 leading-relaxed text-center">
+                {step.description}
+              </p>
+            </Tilt>
+          </motion.div>
+        ))}
       </div>
-    </motion.section>
+    </section>
   );
 }

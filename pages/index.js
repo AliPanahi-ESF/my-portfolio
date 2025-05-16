@@ -6,6 +6,7 @@ import { Profiler } from "react";
 import ProjectPage from "@/components/ProjectPage";
 import GetToKnow from "@/components/GetToKnow";
 import Contact from "@/components/Contact";
+import MySkills from "@/components/MySkills";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
        <UnderConstructionBanner />
       <Hero />
       <MyApproach />
+      <MySkills />
       <SelectedWork />
       <GetToKnow />
       <Contact />

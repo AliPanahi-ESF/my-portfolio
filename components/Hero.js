@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import Image from "next/image";
 
 export default function Hero() {
-  const [mouseX, setMouseX] = useState(0);
   const [width, setWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1000
   );
@@ -23,13 +23,10 @@ export default function Hero() {
       });
     };
 
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
+    const handleResize = () => setWidth(window.innerWidth);
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
@@ -37,16 +34,28 @@ export default function Hero() {
   }, [width]);
 
   return (
-    
     <motion.section
-      id = "home" className="hero section-noise relative flex flex-col justify-center items-center"
-      initial={{ opacity: 0, y: 50 }} // Start hidden & moved down
-      animate={{ opacity: 1, y: 0 }} // Fade in & move up
-      transition={{ duration: 1.5, ease: "easeOut" }} // Smooth effect
+      id="home"
+      className="hero section-noise relative flex justify-center items-center min-h-screen overflow-hidden"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.5, ease: "easeOut" }}
     >
-      {/* Wrap for Main Title */}
-      <div className="wrap text-center">
-        {/* Title: "Ali Panahi" */}
+      {/* 🔹 Framed Background Image Box */}
+      <div className="absolute top-[1%] left-[1%] right-[1%] h-[99%] rounded-3xl overflow-hidden z-0 shadow-2xl border border-white/10">
+        <Image
+          src="/background.png"
+          alt="Background"
+          layout="fill"
+          objectFit="cover"
+          className="object-cover"
+          priority
+            unoptimized
+        />
+      </div>
+
+      {/* 🔹 Hero Animated Title */}
+      <div className="relative z-10 wrap text-center px-4">
         <div className="line">
           <div className="left">
             <div className="content">
@@ -60,7 +69,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Subtitle Line 1: "UX/UI Designer" */}
         <div className="line">
           <div className="left">
             <div className="content">
@@ -74,7 +82,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Subtitle Line 2: "Front-End Developer" */}
         <div className="line">
           <div className="left">
             <div className="content">
@@ -89,14 +96,13 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 🔹 Intro Section (Bottom-Left) */}
+      {/* 🔹 Bottom Left Callout */}
       <motion.div
-        className="absolute bottom-16 left-16 md:bottom-20 md:left-20 flex flex-col items-start text-left w-auto max-w-[700px] min-h-[200px] p-6"
+        className="absolute bottom-16 left-6 md:left-20 flex flex-col items-start text-left w-auto max-w-[700px] min-h-[200px] p-6"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.2, delay: 0.5 }}
       >
-        {/* 🔹 Layer 1: "I Make" */}
         <motion.h2
           className="text-3xl md:text-6xl font-bold text-gray-300"
           initial={{ opacity: 0, y: 20 }}
@@ -106,14 +112,15 @@ export default function Hero() {
           I Make
         </motion.h2>
 
-        {/* 🔹 Layer 2: Scroll Button + "Awesome" */}
         <div className="flex items-center mt-2">
           <motion.button
             className="w-14 h-14 rounded-full bg-white text-black font-bold flex items-center justify-center mr-4 shadow-lg"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+            onClick={() =>
+              window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+            }
           >
             ↓
           </motion.button>
@@ -127,7 +134,6 @@ export default function Hero() {
           </motion.h2>
         </div>
 
-        {/* 🔹 Layer 3: Typewriting Effect (With Looping Text) */}
         <motion.h2
           className="text-4xl md:text-6xl font-bold mt-2 text-blue-400"
           initial={{ opacity: 0, y: 20 }}
