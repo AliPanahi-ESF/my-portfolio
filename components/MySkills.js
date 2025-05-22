@@ -3,15 +3,17 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const skills = {
   design: [
-    { label: "Figma", detail: "Prototyped full design systems, incl. ASML project" },
-    { label: "Photoshop", detail: "Used in branding and visuals for early freelance projects" },
-    { label: "Illustrator", detail: "Logo design for marine tech startup" },
+    { label: "UI/UX Design", detail: "Creating user-centered interfaces from wireframes to high-fidelity prototypes using tools like Figma." },
+    { label: "Branding & Identity", detail: "Developing consistent visual languages, logo design, and brand assets." },
+    { label: "Design Systems", detail: "Building and maintaining scalable design systems (e.g., ASML project)." },
+    { label: "Prototyping", detail: "Using interactive tools to test and validate ideas before development." }
   ],
   dev: [
-    { label: "React", detail: "Built interactive dashboards with dynamic components" },
-    { label: "Next.js", detail: "Used in portfolio and fast-loading client pages" },
-    { label: "TailwindCSS", detail: "Rapid styling with custom theming" },
-  ],
+    { label: "Front-end Development", detail: "Building responsive interfaces using HTML, CSS, and JavaScript." },
+    { label: "React / Next.js", detail: "Creating dynamic SPAs and fast-loading websites with modern frameworks." },
+    { label: "Component Libraries", detail: "Implementing reusable UI components and working with TailwindCSS and design systems." },
+    { label: "Performance Optimization", detail: "Improving site speed and accessibility." }
+  ]
 };
 
 export default function SkillSwitch() {
@@ -19,45 +21,67 @@ export default function SkillSwitch() {
 
   return (
     <section
-      className="relative w-full py-24 px-6 flex flex-col items-center text-center overflow-hidden"
+      className="relative w-full py-28 px-6 flex flex-col items-center text-center overflow-hidden"
       style={{
-        background: "linear-gradient(to right, #000 10%, #0b0b0b 30%, #0e1a1d 70%, #000 90%)",
+        background:
+          mode === "design"
+            ? "linear-gradient(to right, #000 10%, #0b0b0b 30%, #0e1a1d 70%, #000 90%)"
+            : "linear-gradient(to right, #000 10%, #0d0f15 30%, #0a0a0a 70%, #000 90%)",
+        transition: "background 0.8s ease-in-out",
       }}
     >
-      <h2 className="text-4xl md:text-7xl font-heading tracking-wider text-white uppercase mb-16">
+      <h2 className="text-4xl md:text-8xl font-heading tracking-wider text-white uppercase mb-16">
         What I Use
       </h2>
 
-      {/* Toggle Button */}
-      <div className="mb-12 relative z-10">
-        <div className="inline-flex border border-white/20 rounded-full overflow-hidden shadow-lg">
-          {["design", "dev"].map((type) => (
-            <button
-              key={type}
-              onClick={() => setMode(type)}
-              className={`px-6 py-2 text-sm md:text-base transition-all duration-300 ${
-                mode === type
-                  ? "bg-blue-500 text-white"
-                  : "text-white hover:bg-white/10"
-              }`}
-            >
-              {type === "design" ? "🎨 Design" : "💻 Dev"}
-            </button>
-          ))}
+      {/* Toggle Switch */}
+      <motion.div
+        className="mb-14 relative z-10"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="relative w-44 h-11 bg-white/10 rounded-full overflow-hidden border border-white/20 shadow-inner">
+          <motion.div
+            layout
+            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            className={`absolute top-0 w-1/2 h-full rounded-full ${
+              mode === "dev" ? "left-1/2" : "left-0"
+            }`}
+            style={{
+              background: mode === "dev" ? "#ffffff22" : "#3b82f666",
+              boxShadow: "0 0 15px rgba(59,130,246,0.3)",
+            }}
+          />
+          <div className="flex relative z-10 h-full text-white text-sm md:text-base font-medium">
+            {[
+              { id: "design", label: "🎨 Design" },
+              { id: "dev", label: "💻 Dev" },
+            ].map(({ id, label }) => (
+              <button
+                key={id}
+                onClick={() => setMode(id)}
+                className="flex-1 flex items-center justify-center z-10 relative hover:opacity-80 transition"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Skills Cards */}
+      {/* Skill Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl relative z-10">
         <AnimatePresence mode="wait">
           {skills[mode].map((skill, index) => (
             <motion.div
               key={skill.label}
               className="bg-white/5 border border-white/10 rounded-3xl p-6 shadow-xl text-left backdrop-blur-md hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.98 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ y: -4 }}
             >
               <h3 className="text-xl font-semibold text-blue-400 mb-2">
                 {skill.label}
@@ -70,7 +94,7 @@ export default function SkillSwitch() {
         </AnimatePresence>
       </div>
 
-      {/* Optional: Noise texture */}
+      {/* Noise Texture */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="w-full h-full bg-[url('/background-noise.png')] opacity-5 mix-blend-soft-light"></div>
       </div>
