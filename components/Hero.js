@@ -44,7 +44,7 @@ export default function Hero() {
       {/* 🔹 Framed Background Image Box */}
       <div className="absolute top-[1%] left-[1%] right-[1%] h-[99%] rounded-3xl overflow-hidden z-0 shadow-2xl border border-white/10">
         <Image
-          src="/background.png"
+          src="/background.webp"
           alt="Background"
           layout="fill"
           objectFit="cover"

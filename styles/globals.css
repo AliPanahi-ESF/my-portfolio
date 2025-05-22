@@ -496,18 +496,18 @@ html, body {
   animation: pulse 1.5s infinite;
 }
 
-/*image auto-scrol anitation*/
+/* Tailwind Custom CSS in globals.css or just use className */
+.animate-scroll-x {
+  animation: scroll-x 100s linear infinite;
+}
+
 @keyframes scroll-x {
   0% {
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-70%);
+    transform: translateX(-50%); /* Adjust based on width */
   }
-}
-
-.animate-scroll-x {
-  animation: scroll-x 120s linear infinite;
 }
 
 /* Pause on hover */

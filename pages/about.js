@@ -5,21 +5,21 @@ import Tilt from "react-parallax-tilt";
 import { useState } from "react";
 
 const images = [
-  "/ali-about/IMG_4491.JPG",
+  "/ali-about/IMG_4491.webp",
   "/ali.jpg",
-  "/ali-about/IMG_4483.JPG",
-  "/ali-about/IMG_4484.JPG",
-  "/ali-about/IMG_4489.JPG",
-  "/ali-about/IMG_4482.JPG",
-  "/ali-about/IMG_4488.JPG",
-  "/ali-about/IMG_4485.JPG",
+  "/ali-about/IMG_4483.webp",
+  "/ali-about/IMG_4484.webp",
+  "/ali-about/IMG_4489.webp",
+  "/ali-about/IMG_4482.webp",
+  "/ali-about/IMG_4488.webp",
+  "/ali-about/IMG_4485.webp",
   "/ali.jpg",
-  "/ali-about/IMG_4480.JPG",
-  "/ali-about/IMG_4486.JPG",
-  "/ali-about/IMG_4481.JPG",
-  "/ali-about/IMG_4487.JPG",
-  "/ali-about/IMG_4490.JPG",
-  "/ali-about/IMG_4479.JPG",
+  "/ali-about/IMG_4480.webp",
+  "/ali-about/IMG_4486.webp",
+  "/ali-about/IMG_4481.webp",
+  "/ali-about/IMG_4487.webp",
+  "/ali-about/IMG_4490.webp",
+  "/ali-about/IMG_4479.webp",
 ];
 
 const testimonials = [
@@ -134,14 +134,12 @@ export default function AboutPage() {
   {/* 🔁 Animated Scrollable Image Banner */}
 {/* 🔁 Infinite Scroll Banner with Hover Interaction */}
 <section className="relative overflow-hidden w-full border-b border-white/10">
-  {/* 🔹 Gradient Overlays (Left & Right) */}
+  {/* 🔹 Left & Right gradient edges */}
   <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-black to-transparent z-10" />
   <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-black to-transparent z-10" />
 
   {/* 🔁 Scrolling Image Row */}
-  <div
-    className="flex gap-6 py-10 px-4 w-max animate-scroll-x hover:[animation-play-state:paused] transition-all duration-300"
-  >
+  <div className="flex gap-6 py-10 px-4 w-max animate-scroll-x hover:[animation-play-state:paused] transition-all duration-300">
     {[...images, ...images].map((src, i) => (
       <div
         key={i}
@@ -149,15 +147,17 @@ export default function AboutPage() {
       >
         <Image
           src={src}
-          alt="Ali Photo"
+          alt={`Ali Photo ${i}`}
           layout="fill"
           objectFit="cover"
+          {...(i === 0 ? { priority: true } : { loading: "lazy" })}
           className="group-hover:scale-110 transition-transform duration-700 ease-out"
         />
       </div>
     ))}
   </div>
 </section>
+
 
 
       {/* 👋 Intro Section */}
