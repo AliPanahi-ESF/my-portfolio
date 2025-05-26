@@ -5,7 +5,7 @@ const projects = [
   {
     title: "UX/UI Design For High-Tech Industry",
     category: "ASML - Graduation Internship",
-    labels: ["UX Research", "Design System", "Prototyping"],
+    labels: ["UX & UI", "Design System", "Prototyping"],
     image: "/asml.JPG",
     link: "/projects/ASML",
     height: "h-[500px]",
@@ -13,7 +13,7 @@ const projects = [
   {
     title: "UI Design for Electric Edorado8s",
     category: "Edorado - Internship",
-    labels: ["Dashboard", "UI Design", "Interaction"],
+    labels: ["UX & UI Design", "Design System"],
     image: "/edorado.jpg",
     link: "/projects/smart-mobile",
     height: "h-[600px]",
@@ -21,10 +21,26 @@ const projects = [
   {
     title: "Branding & UI Design for Lucifer",
     category: "Semester Project",
-    labels: ["Branding", "Gamification", "UX"],
+    labels: ["Branding", "UX & UI", "Front-End"],
     image: "/udiac.jpg",
     link: "/projects/Udiac",
     height: "h-[450px]",
+  },
+  {
+    title: "IOS App - FitPhone",
+    category: "Semester Project",
+    labels: ["UX & UI", "IOS Development"],
+    image: "/fitPhone.png",
+    link: "/projects/FitPhone",
+    height: "h-[450px]",
+  },
+    {
+    title: "GP Android App",
+    category: "Smart Mobile Development",
+    labels: ["UX & UI Design", "Android Development"],
+    image: "/androidApp.png",
+    link: "/projects/gPMobileApp",
+    height: "h-[600px]",
   },
 ];
 

@@ -33,15 +33,13 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <a href="https://github.com/yourgithub" target="_blank" className="hover:text-blue-400 transition">
+          <a href="https://github.com/AliPanahi-ESF" target="_blank" className="hover:text-blue-400 transition">
             <FaGithub />
           </a>
           <a href="https://www.linkedin.com/in/alipanahi090/" target="_blank" className="hover:text-blue-400 transition">
             <FaLinkedin />
           </a>
-          <a href="https://www.instagram.com/yourhandle" target="_blank" className="hover:text-blue-400 transition">
-            <FaInstagram />
-          </a>
+
         </motion.div>
       </div>
 

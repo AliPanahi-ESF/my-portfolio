@@ -19,9 +19,9 @@ export default function SmartMobileProject() {
         transition={{ duration: 0.6 }}
         className="w-full max-w-6xl text-center mb-16"
       >
-        <h2 className="text-4xl md:text-6xl font-heading mb-4">Loyalty of Lucifer</h2>
+        <h2 className="text-4xl md:text-6xl font-heading mb-4">GeweldigHuisartz</h2>
         <p className="text-md md:text-xl text-white/70">
-          Student Project • Team Project • Client: Lucifer Coffee Roasters & Team Liquid
+          GP Mobile App  • Client: Fontys UAC
         </p>
       </motion.div>
 
@@ -33,7 +33,7 @@ export default function SmartMobileProject() {
         className="w-full max-w-6xl mb-10"
       >
         <iframe
-          src="https://alipanahi.notion.site/ebd/b718f4fe30e1446eaec7f864e1c4731b"
+          src="https://alipanahi.notion.site/ebd/f4f278d5ba7f478587de1786872bee2a"
           width="100%"
           height="900"
           frameBorder="0"
