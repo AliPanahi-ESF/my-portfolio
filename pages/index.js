@@ -17,7 +17,7 @@ export default function Home() {
       <MyApproach />
       <MySkills />
       <SelectedWork />
-      <GetToKnow />
+
       <Contact />
     </>
   );

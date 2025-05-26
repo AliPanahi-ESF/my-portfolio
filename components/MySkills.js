@@ -53,7 +53,7 @@ export default function SkillSwitch() {
               boxShadow: "0 0 15px rgba(59,130,246,0.3)",
             }}
           />
-          <div className="flex relative z-10 h-full text-white text-sm md:text-base font-medium">
+          <div className="flex relative z-10 h-full text-white text-sm md:text-base font-medium ">
             {[
               { id: "design", label: "🎨 Design" },
               { id: "dev", label: "💻 Dev" },
@@ -61,7 +61,7 @@ export default function SkillSwitch() {
               <button
                 key={id}
                 onClick={() => setMode(id)}
-                className="flex-1 flex items-center justify-center z-10 relative hover:opacity-80 transition"
+                className="flex-1 flex items-center justify-center z-10 relative hover:opacity-80 transition "
               >
                 {label}
               </button>

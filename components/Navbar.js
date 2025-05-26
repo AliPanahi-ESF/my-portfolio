@@ -23,10 +23,10 @@ export default function Navbar() {
     >
       <ul className="flex gap-6 items-center justify-center">
         {[
-          { en: "HOME", fa: "خانه", href: "/#home" },
-          { en: "WORK", fa: "کارها", href: "/#work" },
-          { en: "ABOUT", fa: "درباره", href: "/about" },
-          { en: "CONTACT", fa: "تماس", href: "/#contact" },
+          { en: "HOME", fa: "HOME", href: "/#home" },
+          { en: "WORK", fa: "WORK", href: "/#work" },
+          { en: "ABOUT", fa: "ABOUT", href: "/about" },
+          { en: "CONTACT", fa: "Email", href: "/#contact" },
         ].map((item, index) => (
           <li
             key={index}
