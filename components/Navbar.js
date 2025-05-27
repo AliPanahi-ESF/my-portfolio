@@ -30,18 +30,17 @@ export default function Navbar() {
         ].map((item, index) => (
           <li
             key={index}
-            className="relative group cursor-pointer px-4 py-2 rounded-xl transition duration-300 hover:border hover:border-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
+            // Removed 'cursor-pointer'
+            // Added new hover effects: hover:bg-white/20 hover:scale-105
+            className="relative group px-4 py-2 rounded-xl transition duration-300 hover:bg-white/20 hover:scale-105"
           >
             <Link
               href={item.href}
               className="font-heading text-white text-sm md:text-base block text-center relative"
             >
-              <span className="block group-hover:opacity-0 transition-opacity duration-300">
-                {item.en}
-              </span>
-              <span className="absolute inset-0 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {item.fa}
-              </span>
+              {/* THIS IS THE KEY CHANGE: Simplified to show ONLY the English text.
+                  The second <span> and all 'group-hover' opacity classes are removed. */}
+              <span className="block">{item.en}</span>
             </Link>
           </li>
         ))}

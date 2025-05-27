@@ -8,30 +8,37 @@ export default function Hero() {
     typeof window !== "undefined" ? window.innerWidth : 1000
   );
 
+  const isMobile = width < 768;
+
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      let normalizedPosition = e.pageX / (width / 2) - 1;
-      let speedSlow = 100 * normalizedPosition;
-      let speedFast = 200 * normalizedPosition;
-
-      document.querySelectorAll(".spanSlow").forEach((span) => {
-        span.style.transform = `translateX(${speedSlow}px)`;
-      });
-
-      document.querySelectorAll(".spanFast").forEach((span) => {
-        span.style.transform = `translateX(${speedFast}px)`;
-      });
-    };
-
     const handleResize = () => setWidth(window.innerWidth);
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [width]);
+    if (!isMobile) {
+      const handleMouseMove = (e) => {
+        let normalizedPosition = e.pageX / (width / 2) - 1;
+        let speedSlow = 100 * normalizedPosition;
+        let speedFast = 200 * normalizedPosition;
+
+        document.querySelectorAll(".spanSlow").forEach((span) => {
+          span.style.transform = `translateX(${speedSlow}px)`;
+        });
+
+        document.querySelectorAll(".spanFast").forEach((span) => {
+          span.style.transform = `translateX(${speedFast}px)`;
+        });
+      };
+
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("resize", handleResize);
+      };
+    } else {
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, [width, isMobile]);
 
   return (
     <motion.section
@@ -41,7 +48,6 @@ export default function Hero() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5, ease: "easeOut" }}
     >
-      {/* 🔹 Framed Background Image Box */}
       <div className="absolute top-[1%] left-[1%] right-[1%] h-[99%] rounded-3xl overflow-hidden z-0 shadow-2xl border border-white/10">
         <Image
           src="/background.webp"
@@ -50,21 +56,34 @@ export default function Hero() {
           objectFit="cover"
           className="object-cover"
           priority
-            unoptimized
+          unoptimized
         />
       </div>
 
-      {/* 🔹 Hero Animated Title */}
       <div className="relative z-10 wrap text-center px-4">
         <div className="line">
           <div className="left">
             <div className="content">
-              <span className="spanSlow title-text">Ali Panahi</span>
+              <motion.span
+                className="spanSlow title-text"
+                initial={isMobile ? { x: -30, opacity: 0 } : false}
+                animate={isMobile ? { x: 0, opacity: 1 } : false}
+                transition={isMobile ? { duration: 1.2, delay: 0.3 } : false}
+              >
+                Ali Panahi
+              </motion.span>
             </div>
           </div>
           <div className="right">
             <div className="content">
-              <span className="spanSlow title-text">Ali Panahi</span>
+              <motion.span
+                className="spanSlow title-text"
+                initial={isMobile ? { x: 30, opacity: 0 } : false}
+                animate={isMobile ? { x: 0, opacity: 1 } : false}
+                transition={isMobile ? { duration: 1.2, delay: 0.3 } : false}
+              >
+                Ali Panahi
+              </motion.span>
             </div>
           </div>
         </div>
@@ -72,12 +91,26 @@ export default function Hero() {
         <div className="line">
           <div className="left">
             <div className="content">
-              <span className="spanFast subtitle-text">UX/UI Designer</span>
+              <motion.span
+                className="spanFast subtitle-text"
+                initial={isMobile ? { x: -30, opacity: 0 } : false}
+                animate={isMobile ? { x: 0, opacity: 1 } : false}
+                transition={isMobile ? { duration: 1.2, delay: 0.4 } : false}
+              >
+                UX/UI Designer
+              </motion.span>
             </div>
           </div>
           <div className="right">
             <div className="content">
-              <span className="spanFast subtitle-text">UX/UI Designer</span>
+              <motion.span
+                className="spanFast subtitle-text"
+                initial={isMobile ? { x: 30, opacity: 0 } : false}
+                animate={isMobile ? { x: 0, opacity: 1 } : false}
+                transition={isMobile ? { duration: 1.2, delay: 0.4 } : false}
+              >
+                UX/UI Designer
+              </motion.span>
             </div>
           </div>
         </div>
@@ -85,18 +118,31 @@ export default function Hero() {
         <div className="line">
           <div className="left">
             <div className="content">
-              <span className="spanFast subtitle-text">Front-End Developer</span>
+              <motion.span
+                className="spanFast subtitle-text"
+                initial={isMobile ? { x: -30, opacity: 0 } : false}
+                animate={isMobile ? { x: 0, opacity: 1 } : false}
+                transition={isMobile ? { duration: 1.2, delay: 0.5 } : false}
+              >
+                Front-End Developer
+              </motion.span>
             </div>
           </div>
           <div className="right">
             <div className="content">
-              <span className="spanFast subtitle-text">Front-End Developer</span>
+              <motion.span
+                className="spanFast subtitle-text"
+                initial={isMobile ? { x: 30, opacity: 0 } : false}
+                animate={isMobile ? { x: 0, opacity: 1 } : false}
+                transition={isMobile ? { duration: 1.2, delay: 0.5 } : false}
+              >
+                Front-End Developer
+              </motion.span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 🔹 Bottom Left Callout */}
       <motion.div
         className="absolute bottom-16 left-6 md:left-20 flex flex-col items-start text-left w-auto max-w-[700px] min-h-[200px] p-6"
         initial={{ opacity: 0, x: -50 }}

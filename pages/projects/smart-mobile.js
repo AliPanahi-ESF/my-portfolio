@@ -19,7 +19,7 @@ export default function SmartMobileProject() {
         allowFullScreen
         className="rounded-3xl shadow-lg mt-6"
       ></iframe>
-            <div className="w-full max-w-4xl mt-6">
+            <div className="w-full max-w-7xl mt-6">
         <img
           src="/Edorado-explanation.jpg" // Ensure this matches the public folder path
           alt="Project Brief"
@@ -32,6 +32,15 @@ export default function SmartMobileProject() {
       >
         Back to Portfolio
       </a>
+      {/* 🔗 Floating Action Button for Exploring Prototype */}
+<a
+  href="https://www.figma.com/design/aoytWMO1rO2tnA5SfIpUMG/Edorado-Dashboard-UI?node-id=13-11&t=eIzS9k5mUTdcPjKa-1"
+  target="_blank"
+  className="fixed bottom-8 right-6 md:right-10 z-50 px-6 py-3 rounded-full bg-blue-600 text-white font-medium text-sm shadow-lg hover:bg-blue-500 transition backdrop-blur-sm border border-white/20"
+>
+  Explore Prototype ↗
+</a>
+
     </section>
   );
 }
