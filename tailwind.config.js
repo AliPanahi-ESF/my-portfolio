@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
         heading: ["Space Grotesk", "sans-serif"],
+        cinzel: ['Cinzel', 'serif'],
       },
       animation: {
         'scroll-x': 'scroll-x 40s linear infinite',

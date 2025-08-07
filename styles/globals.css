@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap');
+/* --- CORRECTED FONT IMPORT --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap');
+
 /* Apply noise effect to all sections except menu and footer */
 /* Apply noise effect as an overlay */
 /* Base noise effect */
@@ -127,11 +129,7 @@
 }
 
 .right .content {
-
   text-align: center;
-  transform: translate(-50vw);
-}
-.right .content {
   transform: translateX(-50%);
 }
 
@@ -142,7 +140,6 @@ span {
   line-height: 1;
   transition: ease-out 0.6s;
 }
-
 
 .menu-item {
   font-family: 'Cinzel', serif;
@@ -160,8 +157,6 @@ span {
   transition: opacity 0.3s ease-in-out;
 }
 
-
-
 .menu-item:hover .menu-text {
   opacity: 0;
 }
@@ -170,22 +165,6 @@ span {
   opacity: 1;
 }
 
-
-/* 🔹 Section Layout */
-.about-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 20px;
-}
-
-/* 🔹 Titles */
-.section-title {
-  font-size: 40px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--secondary-color);
-}
 /* 🔹 Section Layout */
 .about-page {
   max-width: 1200px;
@@ -254,6 +233,7 @@ span {
   font-style: italic;
   color: var(--text-color);
 }
+
 .project-detail {
   max-width: 800px;
   margin: 0 auto;
@@ -314,9 +294,6 @@ span {
   transform: scale(1.1);
 }
 
-
-
-
 /* White Cursor (Main Cursor) */
 .custom-cursor {
   position: fixed;
@@ -347,31 +324,58 @@ span {
   transform: scale(1.5);
 }
 
-/* 🔹 Preloader Container */
+/* --- UPDATED PRELOADER STYLES START HERE --- */
+
+/* 🔹 Preloader Container (Updated) */
 .preloader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: white;
-  color: wheat;
+  background: black; /* Changed for a sleeker look */
+  color: white;      /* Changed text color */
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   z-index: 1000;
 }
 
-/* 🔹 Loading Text */
+/* 🔹 New container to vertically align content */
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 🔹 Loading Text (Updated for responsiveness) */
 .loading-text {
-  font-size: 8rem;
+  /* This makes the font size fluid: 10vw on small screens, up to a max of 8rem */
+  font-size: clamp(4rem, 15vw, 8rem); 
   font-weight: bold;
   font-family: Cinzel, serif;
-  position: absolute;
-  z-index: 2;
-
 }
+
+/* 🔹 New class for the progress bar container */
+.progress-bar-container {
+  width: 70vw; /* Responsive width */
+  max-width: 400px; /* Max width on large screens */
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* 🔹 New class for the filling progress bar */
+.progress-bar {
+  height: 100%;
+  background-color: white;
+  border-radius: 4px;
+}
+
+/* --- UPDATED PRELOADER STYLES END HERE --- */
+
 
 /* 🔹 Background Animation */
 .loading-bg {
@@ -440,8 +444,6 @@ span {
   transform: scale(1.05);
 }
 
-
-
 /* 🔹 Scroll Button */
 .scroll-btn {
   display: flex;
@@ -462,11 +464,6 @@ span {
 }
 
 /* Hide scrollbar for all browsers */
-html, body {
-  overflow: hidden; /* Completely remove scrolling */
-}
-
-/* Alternative: Hide scrollbar but allow scrolling */
 html, body {
   overflow-x: hidden; /* Hides horizontal scrolling */
   overflow-y: scroll; /* Allows vertical scrolling but hides scrollbar */
@@ -529,7 +526,6 @@ html, body {
 .glow-hover:hover {
   box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
 }
-
 
 .perspective {
   perspective: 1000px;

@@ -15,7 +15,7 @@ export default function Footer() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-heading uppercase tracking-widest text-white/80 text-center md:text-left">
+          <h3 className="text-4xl font-heading uppercase tracking-widest text-white/80 text-center md:text-left">
             Get in touch
           </h3>
           <a

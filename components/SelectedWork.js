@@ -57,7 +57,7 @@ export default function SelectedWork() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      <h2 className="md:text-8xl text-2xl uppercase tracking-widest font-heading text-white text-center">
+      <h2 className="md:text-8xl text-4xl uppercase tracking-widest font-heading text-white text-center">
         Selected Work
       </h2>
 

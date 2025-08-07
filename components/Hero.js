@@ -4,42 +4,71 @@ import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
 
 export default function Hero() {
-  const [width, setWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1000
-  );
+  // 1. Initialize state to a default (e.g., false for desktop).
+  //    This ensures server and client match on first render.
+  const [isMobile, setIsMobile] = useState(false);
 
-  const isMobile = width < 768;
-
+  // 2. This effect runs ONLY on the client after the component mounts.
+  //    It safely checks the window size and updates the state.
   useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
+    checkDevice(); // Check on initial load
+    window.addEventListener("resize", checkDevice);
+
+    // Cleanup listener on component unmount
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []); // Empty array means this runs only once on mount
+
+  // 3. This effect handles the animations. 
+  //    It re-runs whenever `isMobile` changes.
+  useEffect(() => {
+    // If desktop, set up mouse listener
     if (!isMobile) {
       const handleMouseMove = (e) => {
-        let normalizedPosition = e.pageX / (width / 2) - 1;
+        let normalizedPosition = e.pageX / (window.innerWidth / 2) - 1;
         let speedSlow = 100 * normalizedPosition;
         let speedFast = 200 * normalizedPosition;
 
         document.querySelectorAll(".spanSlow").forEach((span) => {
           span.style.transform = `translateX(${speedSlow}px)`;
         });
-
         document.querySelectorAll(".spanFast").forEach((span) => {
           span.style.transform = `translateX(${speedFast}px)`;
         });
       };
 
       window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-        window.removeEventListener("resize", handleResize);
-      };
-    } else {
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, [width, isMobile]);
 
+      // Cleanup function for this effect
+      return () => window.removeEventListener("mousemove", handleMouseMove);
+    } 
+    // If mobile, set up device tilt listener
+    else {
+      const handleOrientation = (e) => {
+        const gamma = e.gamma;
+        if (gamma !== null) {
+          const speedSlow = gamma * 1.5;
+          const speedFast = gamma * 3;
+          document.querySelectorAll(".spanSlow").forEach((span) => {
+            span.style.transform = `translateX(${speedSlow}px)`;
+          });
+          document.querySelectorAll(".spanFast").forEach((span) => {
+            span.style.transform = `translateX(${speedFast}px)`;
+          });
+        }
+      };
+
+      window.addEventListener("deviceorientation", handleOrientation);
+
+      // Cleanup function for this effect
+      return () => window.removeEventListener("deviceorientation", handleOrientation);
+    }
+  }, [isMobile]); // This effect depends on the 'isMobile' state
+
+  // --- Your full JSX goes here ---
   return (
     <motion.section
       id="home"
