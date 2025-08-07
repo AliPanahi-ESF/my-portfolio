@@ -31,15 +31,16 @@ export default function Navbar() {
           <li
             key={index}
             // Removed 'cursor-pointer'
-            // Added new hover effects: hover:bg-white/20 hover:scale-105
-            className="relative group px-4 py-2 rounded-xl transition duration-300 hover:bg-white/20 hover:scale-105"
+            // ENHANCED hover effects for outstanding yet minimalistic look:
+            // - Stronger blue shadow (opacity 0.5, larger spread)
+            // - Subtle vertical lift (-translate-y-1)
+            className="relative group px-4 py-2 rounded-xl transition duration-300 hover:border hover:border-blue-500 hover:shadow-[0_0_35px_rgba(59,130,246,0.5)] hover:-translate-y-1"
           >
             <Link
               href={item.href}
               className="font-heading text-white text-sm md:text-base block text-center relative"
             >
-              {/* THIS IS THE KEY CHANGE: Simplified to show ONLY the English text.
-                  The second <span> and all 'group-hover' opacity classes are removed. */}
+              {/* Ensures only English text is shown, no hover-based text change */}
               <span className="block">{item.en}</span>
             </Link>
           </li>

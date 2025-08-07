@@ -1,12 +1,12 @@
 import SelectedWork from "@/components/SelectedWork";
 import UnderConstructionBanner from "@/components/UnderConstructionBanner";
 import Hero from "../components/Hero";
-import MyApproach from "../components/MyApproach";
 import { Profiler } from "react";
 import ProjectPage from "@/components/ProjectPage";
 import GetToKnow from "@/components/GetToKnow";
 import Contact from "@/components/Contact";
 import MySkills from "@/components/MySkills";
+import Navbar from "@/components/Navbar";
 
 
 export default function Home() {
@@ -14,10 +14,9 @@ export default function Home() {
     <>
        <UnderConstructionBanner />
       <Hero />
-      <MyApproach />
+      <Navbar/>
       <MySkills />
       <SelectedWork />
-
       <Contact />
     </>
   );

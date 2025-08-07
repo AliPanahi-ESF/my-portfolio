@@ -1,7 +1,7 @@
 export default function SmartMobileProject() {
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center text-white px-10 py-10 bg-black">
-      <h2 className="text-4xl md:text-6xl font-heading text-center mb-10">User Interface for Edorado </h2>
+    <section className="w-full min-h-screen flex flex-col items-center justify-center text-white px-10 py-20 bg-black">
+      <h2 className="text-4xl md:text-6xl font-heading text-center mb-1">User Interface for Edorado </h2>
 
       {/* Custom Styling & Content */}
       <div className="w-full max-w-4xl text-lg opacity-80">

@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-blue-900/10 to-transparent pointer-events-none z-0" />
       <div className="absolute inset-0 bg-[url('/background-noise.png')] opacity-5 z-0 mix-blend-soft-light" />
 
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+      <div id ="contact" className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-10">
         <motion.div
           className="flex flex-col md:flex-row md:items-center gap-4"
           initial={{ opacity: 0, y: 20 }}

@@ -25,15 +25,15 @@ const images = [
 const testimonials = [
   {
     quote:
-      "Ali came in with fresh eyes and immediately started improving the design system. He has a real instinct for spotting chaos and cleaning it up.",
-    name: "UX Lead at ASML",
-    linkedin: "https://www.linkedin.com/in/example1",
+      ` Ali impressed us with his professionalism, initiative, and ability to adapt quickly to a highly technical and unfamiliar domain`,
+    name: "Senior Developer at ASML",
+    linkedin: "https://www.linkedin.com/in/keriplumstead/",
   },
   {
     quote:
-      "If Ali doesn't know how to do something, he’ll learn it by tomorrow. Probably with a Figma file already started.",
-    name: "A friend who's tired of hearing about design",
-    linkedin: "https://www.linkedin.com/in/example3",
+      `Ali’s leadership and proactive mindset stood out. He independently planned and executed his project, engaged effectively with a wide range of stakeholders, and even took the initiative to enroll in personal development courses offered at ASML `,
+    name: "Senior Developer at ASML",
+    linkedin: "https://www.linkedin.com/in/keriplumstead/",
   },
 ];
 
@@ -42,13 +42,13 @@ const traits = [
     emoji: "✨",
     title: "I ADAPT FAST, LIKE UNCOMFORTABLY FAST",
     description:
-      "Throw me into a messy project, a new team, or a weird constraint — I’ll find my way. I’ve worked in chaotic startups, giant corporates, and everything in between.",
+      "Throw me into a messy project, a new team, or a weird constraint, I’ll find my way. I’ve worked in chaotic startups, giant corporates, and everything in between.",
   },
   {
     emoji: "🧹",
     title: "I LEARN WHILE DOING (AND DO WHILE LEARNING)",
     description:
-      "If I don’t know something, I figure it out mid-flight. From building systems from scratch to jumping into dev workflows — I do while learning.",
+      "If I don’t know something, I figure it out mid-flight. From building systems from scratch to jumping into dev workflows, I do while learning.",
   },
   {
     emoji: "💊",
@@ -60,13 +60,13 @@ const traits = [
     emoji: "🤍",
     title: "I BRING EMOTION INTO UX (WITHOUT THE DRAMA)",
     description:
-      "I want users to feel clarity, trust, and subtle delight. I keep it human — even when things get messy.",
+      "I want users to feel clarity, trust, and subtle delight. I keep it human , even when things get messy.",
   },
   {
     emoji: "🚀",
     title: "I STAY CURIOUS (AND A LITTLE OBSESSED)",
     description:
-      "Whether it’s naming conventions or dashboard design — I’ll go too deep in the best way possible.",
+      "Whether it’s naming conventions or dashboard design , I’ll go too deep in the best way possible.",
   },
 ];
 
@@ -180,8 +180,8 @@ export default function AboutPage() {
     </motion.h1>
 
     {[
-      "From Iran, based in the Netherlands. A design graduate with a background in front-end development and a never-ending curiosity for how things work (or don’t). Self-taught, self-doubted, and self-corrected — still here. Still building.",
-      "I believe good design isn’t about clean pixels — it’s about clarity. The goal is always: make the user breathe easier. Whether that’s a product flow or a visual system, I want people to feel like it makes sense without knowing why.",
+      "From Iran, based in the Netherlands. A design graduate with a background in front-end development and a never-ending curiosity for how things work (or don’t). Self-taught, self-doubted, and self-corrected , still here. Still building.",
+      "I believe good design isn’t about clean pixels, it’s about clarity. The goal is always: make the user breathe easier. Whether that’s a product flow or a visual system, I want people to feel like it makes sense without knowing why.",
       "When not designing, you’ll find me behind a bar pouring drinks, playing with lights at the club, in the gym trying to stay sane, or walking around aimlessly overthinking everything (but with style). Sometimes I write, sometimes I disappear.",
     ].map((text, i) => (
       <motion.p
