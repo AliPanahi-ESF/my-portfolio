@@ -20,15 +20,12 @@ export default function SkillSwitch() {
   const [mode, setMode] = useState("design");
 
   return (
-    <section
-      className="relative w-full py-28 px-6 flex flex-col items-center text-center overflow-hidden"
-      style={{
-        background:
-          mode === "design"
-            ? "linear-gradient(to right, #000 10%, #0b0b0b 30%, #0e1a1d 70%, #000 90%)"
-            : "linear-gradient(to right, #000 10%, #0d0f15 30%, #0a0a0a 70%, #000 90%)",
-        transition: "background 0.8s ease-in-out",
-      }}
+    // 1. ADDED FADE-IN ANIMATION TO THE ENTIRE SECTION
+    <motion.section
+      className="relative w-full py-28 px-6 flex flex-col items-center text-center overflow-hidden bg-[#111111]" // 3. CHANGED BACKGROUND for better section separation
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
     >
       <h2 className="text-4xl md:text-8xl font-heading tracking-wider text-white uppercase mb-16">
         What I Use
@@ -74,14 +71,15 @@ export default function SkillSwitch() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl relative z-10">
         <AnimatePresence mode="wait">
           {skills[mode].map((skill, index) => (
+            // 2. UPDATED HOVER EFFECT on the card
             <motion.div
               key={skill.label}
-              className="bg-white/5 border border-white/10 rounded-3xl p-6 shadow-xl text-left backdrop-blur-md hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all"
+              className="bg-white/5 border border-white/10 rounded-3xl p-6 shadow-xl text-left backdrop-blur-md transition-all duration-300 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.3)]"
               initial={{ opacity: 0, y: 20, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -5 }} // Kept the subtle lift
             >
               <h3 className="text-xl font-semibold text-blue-400 mb-2">
                 {skill.label}
@@ -98,6 +96,6 @@ export default function SkillSwitch() {
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="w-full h-full bg-[url('/background-noise.png')] opacity-5 mix-blend-soft-light"></div>
       </div>
-    </section>
+    </motion.section>
   );
 }

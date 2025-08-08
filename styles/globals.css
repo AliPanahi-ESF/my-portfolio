@@ -70,7 +70,8 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Change this to align to the top */
+  padding-top: 26vh; /* Add padding to push it down from the top */
   background-color: black;
   overflow: hidden;
 }
@@ -86,13 +87,15 @@
 
 /* Title Styling */
 .title-text {
-  font-size: 8vw; /* Keep title large */
+  /* Min: 48px, Preferred: 15vw, Max: 120px */
+  font-size: clamp(6rem, 9vw, 12rem); 
   font-weight: bold;
+    letter-spacing: 1px;
 }
 
 /* Subtitle Styling */
 .subtitle-text {
-  font-size: 2vw; /* Smaller text so it fits */
+  font-size: clamp(1.5rem, 3vw, 6rem);
   letter-spacing: 1px;
   display: block; /* Forces subtitle onto separate lines */
 }
@@ -542,3 +545,4 @@ html, body {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
