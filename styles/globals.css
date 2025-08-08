@@ -88,14 +88,14 @@
 /* Title Styling */
 .title-text {
   /* Min: 48px, Preferred: 15vw, Max: 120px */
-  font-size: clamp(6rem, 9vw, 12rem); 
+  font-size: clamp(4rem, 9vw, 12rem); 
   font-weight: bold;
     letter-spacing: 1px;
 }
 
 /* Subtitle Styling */
 .subtitle-text {
-  font-size: clamp(1.5rem, 3vw, 6rem);
+  font-size: clamp(1rem, 3vw, 6rem);
   letter-spacing: 1px;
   display: block; /* Forces subtitle onto separate lines */
 }
